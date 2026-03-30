@@ -1,0 +1,528 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #070707;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+
+  backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.navbar a:hover {
+  opacity: .6;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:2;
+  margin-bottom:60px;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.6);
+  background-position: center 70%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, #000);
+}
+
+/* glass cards */
+
+.glass-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glass {
+  position: absolute;
+  width: 750px;
+  height: 450px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.glass video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 70%;
+  filter: blur(2px) brightness(0.5);
+    transform: scale(1.1); /* 블러 가장자리 잘림 방지 */
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glass:nth-child(1) {
+  top: 20%;
+  left: 10%;
+}
+
+.glass:nth-child(2) {
+  bottom: 60%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.glass:nth-child(3) {
+  top: 60%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-30px) rotate(6deg);
+  }
+}
+
+/* hero text */
+
+.hero-text {
+  position: relative;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 60px;
+  letter-spacing: 3px;
+}
+
+.hero-text p {
+  margin-top: 15px;
+  opacity: .7;
+}
+.hero-sub{
+  margin-top:30px;
+  font-size:14px;
+  letter-spacing:3px;
+  opacity:0.6;
+}
+
+/* ================= SHOWREEL ================= */
+
+.showreel {
+  font-size: 30px;
+  text-align: center;
+  padding: 90px 0;
+  margin-top: 150px;
+}
+
+.video-box {
+  width: 900px;
+  /* 원하는 크기 */
+  max-width: 90%;
+  /* 반응형 */
+  margin: 0 auto;
+}
+
+.video-box video {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+
+/* ================= WORK GRID ================= */
+
+.works {
+  padding: 120px 10%;
+  text-align: center;
+  position: relative;
+}
+
+.work-grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.work-card {
+  aspect-ratio: 16/9;
+  background: rgba(255, 255, 255, .05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  transition: .4s;
+}
+
+.work-card:hover {
+  transform: translateY(-10px);
+}
+
+footer {
+  text-align: center;
+  padding: 60px;
+  opacity: .5;
+}
+
+.works {
+  padding: 140px 0;
+  text-align: center;
+}
+
+
+.worksSwiper {
+  padding: 5rem 0;
+}
+
+.worksSwiper .swiper-slide {
+  position: relative;
+  width: 300px;
+  aspect-ratio: 9/16;
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+
+  transition: all .2s;
+  display: flex;
+  justify-content: center;
+  opacity: 0.3;
+}
+
+.worksSwiper .swiper-slide-active {
+  opacity: 1;
+}
+
+.work-video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.work-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.worksSwiper {
+  padding: 40px 0;
+}
+
+/* 가운데 카드 강조 */
+
+.swiper-slide-active {
+  transform: scale(1.08);
+  box-shadow: 0 0px 20px rgba(255, 255, 255, 0.1);
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+
+  display: none;
+
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 0;
+
+  z-index: 9999;
+}
+
+.video-modal video {
+  width: auto;
+  max-width: 900px;
+  height: 90vh;
+  border-radius: 12px;
+}
+
+.close-modal {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.showreel{
+  position:relative;
+  padding:0 0;
+  z-index:2;
+}
+
+.showreel-deco{
+  position:absolute;
+  left:60px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.showreel-deco span{
+  writing-mode:vertical-lr;
+  text-orientation:mixed;
+  font-size:18px;
+  transform: rotate(180deg);
+  letter-spacing:4px;
+  opacity:0.6;
+  color: #cbbba0;
+}
+
+.deco-line{
+  width:2px;
+  height:150px;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    #cbbba0,
+    transparent
+  );
+  transform:translateX(-50%);
+  margin-top:15px;
+  opacity:0.5;
+}
+
+.showreel-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:80px;
+  margin-top:60px;
+  padding:0 10%;
+}
+
+.video-box{
+  width:900px;
+  max-width:90%;
+  margin:0 auto;
+
+  position:relative;
+  z-index:2;
+
+  box-shadow:0 30px 80px rgba(0,0,0,0.8);
+}
+
+.showreel-text{
+  flex:1;
+  text-align:left;
+  max-width:420px;
+}
+
+.showreel-text h3{
+  font-size:28px;
+  margin-bottom:20px;
+}
+
+.showreel-text p{
+  line-height:1.7;
+  opacity:0.8;
+  margin-bottom:16px;
+}
+
+.showreel-text .tools{
+  font-size:14px;
+  opacity:0.6;
+}
+
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  }
+  
+  .featured-card{
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:10px;
+  }
+  
+  .featured-card video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  }
+
+  :root{
+    --main-color: #e6d3b3;   /* 베이지 */
+  }
+
+  .navbar a:hover{
+    color: var(--main-color);
+    opacity:1;
+  }
+
+
+  .modal-info h2{
+    color: var(--main-color);
+  }
+
+  .work-info h3{
+    color: var(--main-color);
+    letter-spacing:1px;
+  }
+
+  .scroll-down{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    letter-spacing:3px;
+    opacity:0.6;
+    animation:scrollMove 2s infinite;
+  }
+  
+  @keyframes scrollMove{
+    0%{ transform:translate(-50%,0); opacity:0; }
+    50%{ opacity:1; }
+    100%{ transform:translate(-50%,15px); opacity:0; }
+  }
+  
+  .fade-up{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+  }
+  
+  .fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  
+  .delay1{ transition-delay:0.2s; }
+  .delay2{ transition-delay:0.4s; }
+  .delay3{ transition-delay:0.6s; }
+
+  .film-strip{
+    width:100%;
+    overflow:hidden;
+    padding:40px 0;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+  
+  .film-track{
+    display:flex;
+    gap:30px;
+    width:max-content;
+    filter: blur(1px);
+    animation: filmMove 80s linear infinite;
+  }
+  
+  .film-frame{
+    width:220px;
+    height:140px;
+    background:#111;
+    border:1px solid rgba(255,255,255,0.15);
+    position:relative;
+  }
+  
+  /* 필름 구멍 */
+  .film-frame::before,
+  .film-frame::after{
+    content:"";
+    position:absolute;
+    left:0;
+    width:100%;
+    height:8px;
+    background:repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 12px,
+      #000 12px,
+      #000 18px
+    );
+  }
+  
+  .film-frame::before{ top:0; }
+  .film-frame::after{ bottom:0; }
+  
+  @keyframes filmMove{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+
+  .film-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

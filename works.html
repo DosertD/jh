@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+
+/* works page only */
+
+/* works page */
+.modal-content{
+    width:90%;
+    max-width:1000px;
+}
+
+.works-wrap{
+    max-width:1000px;
+    margin:120px auto;
+    padding:0 20px;
+}
+
+/* GRID */
+
+.works-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+/* CARD */
+
+.work-card{
+    width:100%;
+    height:300px;             /* ⭐ 여기만으로 크기 제어 */
+    overflow:hidden;
+    border-radius:12px;
+    background:#111;
+    position:relative;         /* ⭐ 필수 */
+}
+
+/* VIDEO */
+
+.work-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+/* HOVER */
+
+.work-card:hover video{
+    transform:scale(1.05);
+}
+
+/* TEXT */
+
+.work-info{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:20px;
+    background:linear-gradient(transparent,rgba(0,0,0,0.9));
+}
+
+.work-info h3{
+    font-size:18px;
+}
+
+.work-info p{
+    font-size:13px;
+    opacity:.7;
+}
+
+/* 반응형 */
+
+.works-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+/* CARD */
+
+.work-card{
+    position:relative;
+    height:260px;
+    border-radius:12px;
+    overflow:hidden;
+    background:#111;
+    cursor:pointer;
+    transition:.4s;
+}
+
+/* 영상 */
+
+.work-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+/* 어두운 오버레이 */
+
+.work-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    transition:.4s;
+    pointer-events:none;
+}
+
+/* 텍스트 */
+
+.work-info{
+    position:absolute;
+    bottom:-60px;   /* ⭐ 숨겨둠 */
+    left:0;
+    width:100%;
+    padding:20px;
+    transition:.4s;
+    z-index:2;
+}
+
+/* 제목 */
+
+.work-info h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+/* 설명 */
+
+.work-info p{
+    font-size:13px;
+    opacity:.7;
+}
+
+/* 🔥 핵심 hover 효과 */
+
+.work-card:hover{
+    transform:scale(1.08);
+    z-index:10;
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.work-card:hover video{
+    transform:scale(1.1);
+}
+
+.work-card:hover::after{
+    background:rgba(0,0,0,0.1);
+}
+
+.work-card:hover .work-info{
+    bottom:0;   /* ⭐ 슬라이드 등장 */
+}
+
+.video-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:999;
+}
+
+/* 활성화 */
+
+.video-modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* 컨텐츠 영역 */
+
+
+/* ⭐ 핵심: 영상 비율 유지 */
+
+.modal-content video{
+    width:100%;
+    height:auto;          /* ⭐ 이게 핵심 */
+    max-height:80vh;      /* ⭐ 화면 넘지 않게 */
+    object-fit:contain;   /* ⭐ 원본 비율 유지 */
+    border-radius:10px;
+}
+
+.close-btn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    font-size:30px;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+    background:rgba(0,0,0,0.5);
+    border-radius:50%;
+    padding:5px 12px;
+    z-index:1000;
+}
+
+.close-btn:hover{
+    transform:scale(1.2);
+    opacity:0.7;
+}
+
+/* 기준 잡기 */
+
+.modal-content{
+    position:relative;   /* ⭐ 필수 */
+}
+
+/* WORKS 세로 타이틀 */
+
+.vertical-title{
+    position:fixed;
+  left:30px;
+  top:50%;
+  transform:translateY(-50%) rotate(180deg);
+  writing-mode:vertical-rl;
+  font-size:14px;
+  letter-spacing:5px;
+  color:#cbbba0; /* 베이지 포인트 */
+}
+
+
+/* 왼쪽 라인 추가 (감성 포인트) */
+.vertical-title::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-150px;
+  width:2px;
+  height:150px;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    #cbbba0,
+    transparent
+  );
+  transform:translateX(-50%);
+}
+
+.work-info span{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  opacity:0.6;
+}
+
+.work-card:first-child{
+  grid-column: span 2;
+  height:400px;
+}
+
+.filter-menu{
+  margin-bottom:40px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+}
+
+.filter-menu button{
+  background:none;
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;
+  padding:8px 18px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.filter-menu button:hover,
+.filter-menu .active{
+  background:white;
+  color:black;
+}
+
+.modal-info{
+  margin-top:20px;
+  text-align:left;
+}
+
+.modal-info h2{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.modal-info p{
+  font-size:14px;
+  opacity:0.7;
+}
+
+.work-card{
+  transition:.4s;
+}
+
+.filter-menu .active{
+    background: var(--main-color);
+    color:#000;
+  }
+
+  .work-info h3{
+  color: var(--main-color);
+}
+
+.modal-info h2{
+  color: var(--main-color);
+}
+
+.work-info h3{
+  color: var(--main-color);
+  letter-spacing:1px;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('images/noise.jpg');
+  opacity:0.02;
+  pointer-events:none;
+  z-index:0;
+}
+
+.detail-page-section{
+  margin-top:140px;
+}
+
+.detail-page-head{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.detail-page-head h2{
+  font-size:32px;
+  margin-bottom:10px;
+  color:var(--main-color);
+  letter-spacing:2px;
+}
+
+.detail-page-head p{
+  color:#aaa;
+}
+
+.detail-toggle-card{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:40px;
+  align-items:center;
+  max-width:1000px;
+  margin:0 auto;
+  padding:30px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;
+  background:rgba(255,255,255,0.03);
+  cursor:pointer;
+  transition:.4s;
+}
+
+.detail-toggle-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  border-color:rgba(230,211,179,0.35);
+}
+
+.detail-toggle-thumb{
+  display:flex;
+  justify-content:center;
+}
+
+.detail-toggle-thumb img{
+  width:100%;
+  max-width:260px;
+  height:460px;
+  object-fit:cover;
+  object-position:top;
+  border-radius:16px;
+  display:block;
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+}
+
+.detail-toggle-info h3{
+  font-size:32px;
+  margin-bottom:16px;
+  color:var(--main-color);
+}
+
+.detail-toggle-info p{
+  line-height:1.8;
+  color:#ddd;
+  margin-bottom:14px;
+}
+
+.detail-toggle-info span{
+  display:block;
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:22px;
+}
+
+.detail-open-text{
+  font-size:14px;
+  color:var(--main-color);
+  letter-spacing:1px;
+}
+
+/* ===== 풀스크린 모달 ===== */
+
+.detail-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.35s ease;
+
+  z-index:99999;
+  overflow-y:auto;
+  padding:40px 20px;
+}
+
+.detail-modal.active{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.detail-modal-inner{
+  max-width:1100px;
+  margin:0 auto;
+  transform:scale(.94);
+  opacity:0;
+  transition:.35s ease;
+}
+
+.detail-modal.active .detail-modal-inner{
+  transform:scale(1);
+  opacity:1;
+}
+
+.detail-close{
+  position:fixed;
+  top:24px;
+  right:28px;
+  width:54px;
+  height:54px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  z-index:100000;
+  transition:.3s;
+}
+
+.detail-close:hover{
+  background:rgba(255,255,255,0.18);
+  transform:scale(1.08);
+}
+
+.detail-modal-header{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.detail-modal-header h3{
+  font-size:34px;
+  color:var(--main-color);
+  margin-bottom:8px;
+}
+
+.detail-modal-header p{
+  color:#aaa;
+}
+
+.detail-modal-body{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+}
+
+.detail-modal-body img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:18px;
+  object-fit:contain;
+}
+
+.detail-modal-gif{
+  margin-top:30px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;
+  padding:24px;
+}
+
+.detail-modal-gif h4{
+  font-size:22px;
+  color:var(--main-color);
+  margin-bottom:16px;
+}
+
+.detail-modal-gif img{
+  width:100%;
+  max-width:700px;
+  border-radius:16px;
+  display:block;
+}
+
+body.modal-open{
+  overflow:hidden;
+}
+
+@media (max-width:900px){
+  .detail-toggle-card{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding:24px;
+  }
+
+  .detail-toggle-thumb img{
+    max-width:220px;
+    height:380px;
+  }
+
+  .detail-toggle-info{
+    text-align:center;
+  }
+
+  .detail-toggle-info h3{
+    font-size:26px;
+  }
+
+  .detail-modal{
+    padding:70px 12px 20px;
+  }
+
+  .detail-modal-body{
+    padding:14px;
+    border-radius:18px;
+  }
+
+  .detail-modal-header h3{
+    font-size:26px;
+  }
+
+  .detail-close{
+    position:sticky;
+  top:20px;
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:54px;
+  height:54px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  z-index:100000;
+  transition:.3s;
+  }
+}
+
+.detail-modal-inner{
+  max-width:1100px;
+  margin:0 auto;
+  transform:scale(.94);
+  opacity:0;
+  transition:.35s ease;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.shorts-video-wrap{
+    position:relative;
+    width:100%;
+    cursor:pointer;
+}
+
+.shorts-video-wrap video{
+    width:100%;
+    border-radius:12px;
+}
+
+/* 가운데 재생버튼 */
+.play-button{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    background:rgba(0,0,0,0.6);
+    color:#fff;
+    font-size:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    pointer-events:none;
+    transition:0.3s;
+}
+
+.detail-card{
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+
+.detail-toggle-card{
+    width:70%;
+}
+
+.detail-right{
+    width:18%;
+    margin-right: 300px;
+    position: relative;
+}
+
+.shorts-video-wrap{
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: 0.35s;
+}
+
+.shorts-video-wrap video{
+    width: 100%;
+    transition: 0.35s;
+}
+
+.shorts-video-wrap:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 0 1px #e5d3b3;
+}
+
+.shorts-video-wrap:hover video{
+    transform: scale(1.1);
+}
+
+.detail-right video{
+    width:100%;
+}
+
+.shorts-title{
+    margin-bottom:12px;
+}
+
+.shorts-title h4{
+    font-size:16px;
+    color:var(--main-color);
+    letter-spacing:1px;
+}
+
+.shorts-title p{
+    font-size:12px;
+    opacity:0.7;
+}
+
+    </style>
+</head>
+<body>
+    <header class="navbar">
+
+        <a href="index.html" class="logo">DOSTUDIO</a>
+        
+        <nav>
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+        
+        </header>
+    <section class="works-wrap">
+
+        <h1 class="section-title vertical-title">WORKS</h1>
+
+        <div class="filter-menu">
+            <button class="active" data-filter="all">ALL</button>
+            <button data-filter="shorts">SHORTS</button>
+            <button data-filter="motion">MOTION</button>
+            <button data-filter="branding">BRANDING</button>
+            <button data-filter="detail">DETAIL PAGE</button>
+          </div>
+
+        
+        <div class="works-grid">
+        
+        <!-- CARD -->
+        <div class="work-card" data-category="branding">
+        <video muted loop playsinline>
+        <source src="video/shorts4포폴용.mp4">
+        </video>
+        
+        <div class="work-info">
+        <h3>Nail Shorts</h3>
+        <p>뷰티 브랜드 홍보 숏폼 영상</p>
+        <span>AE / PR</span>
+        </div>
+        </div>
+        
+        <!-- CARD -->
+        <div class="work-card" data-category="shorts">
+        <video muted loop playsinline>
+        <source src="video/쇼츠2.mp4">
+        </video>
+        
+        <div class="work-info">
+        <h3>Beauty Promo</h3>
+        <p>After Effects</p>
+        <span>AE / PR</span>
+        </div>
+        </div>
+        
+        <!-- CARD -->
+        <div class="work-card" data-category="motion">
+        <video muted loop playsinline>
+        <source src="video/계절범죄_찐찐막.mp4">
+        </video>
+        
+        <div class="work-info">
+        <h3>Typography</h3>
+        <p>After Effects</p>
+        <span>AE / PR</span>
+        </div>
+        </div>
+        
+        <!-- CARD -->
+        <div class="work-card" data-category="shorts">
+        <video muted loop>
+        <source src="video/쇼츠4.mp4">
+        </video>
+        
+        <div class="work-info">
+        <h3>Product Video</h3>
+        <p>AE + PR</p>
+        <span>AE / PR</span>
+        </div>
+        </div>
+
+        <div class="work-card">
+            <video muted loop>
+            <source src="video/쇼츠4.mp4">
+            </video>
+            
+            <div class="work-info">
+            <h3>Product Video</h3>
+            <p>AE + PR</p>
+            <span>AE / PR</span>
+            </div>
+            </div>
+        
+        </div>
+        
+        </section>
+
+        <div class="video-modal" id="videoModal">
+            <div class="modal-content">
+              <span class="close-btn">&times;</span>
+              <video id="modalVideo" controls></video>
+              <div class="modal-info">
+                <h2>Project Title</h2>
+                <p>기획 / 편집 / 모션그래픽 담당</p>
+              </div>
+            </div>
+          </div>
+
+          <section class="detail-page-section">
+            <div class="detail-page-head">
+              <h2>DETAIL PAGE</h2>
+              <p>독립적으로 기획 및 제작한 세로형 상세페이지 작업입니다.</p>
+            </div>
+          
+            <div class="detail-card">
+          
+              <!-- 왼쪽 상세페이지 카드 -->
+              <div class="detail-toggle-card" id="detailToggle">
+                <div class="detail-toggle-thumb">
+                  <img src="images/상세페이지_포폴-01.jpg" alt="상세페이지 썸네일">
+                </div>
+          
+                <div class="detail-toggle-info">
+                  <h3>Beauty Detail Page</h3>
+                  <p>제품의 무드와 핵심 정보를 세로형 레이아웃으로 구성한 상세페이지 작업입니다.</p>
+                  <span>Photoshop / Illustrator / Layout Design</span>
+                  <strong class="detail-open-text">Click to View Full Page</strong>
+                </div>
+              </div> <!-- ⭐ 여기서 detail-toggle-card 닫기 -->
+          
+              <!-- 오른쪽 쇼츠 -->
+              <div class="detail-right">
+                <div class="shorts-title">
+                  <h4>Detail Page Shorts</h4>
+                  <p>Product Promotion Video</p>
+                </div>
+                <div class="shorts-video-wrap">
+                  <video id="shortsVideo" playsinline >
+                    <source src="video/shorts5(최종본).mp4" type="video/mp4">
+                  </video>
+                  <div class="play-button" id="playBtn">▶</div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <footer>
+            © 2026 DO
+          </footer>
+          
+          
+          <!-- 풀스크린 상세페이지 오버레이 -->
+          <div class="detail-modal" id="detailModal">
+            <div class="detail-modal-inner">
+              
+              <div class="detail-close-wrap">
+                <button class="detail-close" id="detailClose">×</button>
+              </div>
+          
+              <div class="detail-modal-header">
+                <h3>Beauty Detail Page</h3>
+                <p>세로형 상세페이지 전체 보기</p>
+              </div>
+          
+              <div class="detail-modal-body">
+              <div class="detail-modal-gif">
+                <h4>GIF Preview</h4>
+                <img src="images/slit조명.gif" alt="상세페이지 gif">
+              </div>
+              
+
+              <div class="detail-card">
+    
+    <div class="detail-left">
+        <img src="images/상세페이지_포폴-01.jpg">
+    </div>
+
+</div>
+          
+            </div>
+          </div>
+          
+
+          <script>
+            const cards = document.querySelectorAll('.work-card');
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const closeBtn = document.querySelector('.close-btn');
+            const allVideos = document.querySelectorAll('video');
+            
+            // 열기
+            cards.forEach(card => {
+              const videoSrc = card.querySelector('video source').src;
+            
+              card.addEventListener('click', () => {
+            
+                // 모든 영상 정지
+                allVideos.forEach(v => {
+                  v.pause();
+                  v.currentTime = 0;
+                });
+            
+                modal.classList.add('active');
+                modalVideo.src = videoSrc;
+                modalVideo.play();
+            
+                document.body.style.overflow = 'hidden';
+              });
+            });
+            
+            // ⭐ 닫기 함수 (핵심)
+            function closeModal(){
+              modal.classList.remove('active');
+            
+              // 모달 영상 정지
+              modalVideo.pause();
+              modalVideo.currentTime = 0;
+              modalVideo.src = "";
+            
+              // ⭐ 모든 영상 다시 정지 (중요)
+              allVideos.forEach(v => {
+                v.pause();
+                v.currentTime = 0;
+              });
+            
+              document.body.style.overflow = 'auto';
+            }
+            
+            // 바깥 클릭
+            modal.addEventListener('click', (e) => {
+  if(e.target === modal){
+    closeModal();
+  }
+});
+            
+            // 닫기 버튼
+            closeBtn.addEventListener('click', closeModal);
+            
+            // ESC
+            document.addEventListener('keydown', (e)=>{
+              if(e.key === 'Escape'){
+                closeModal();
+              }
+            });
+
+            const filterButtons = document.querySelectorAll('.filter-menu button');
+const card = document.querySelectorAll('.work-card');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+
+    // 버튼 active 변경
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const filter = button.getAttribute('data-filter');
+
+    cards.forEach(card => {
+      const category = card.getAttribute('data-category');
+
+      if(filter === 'all' || filter === category){
+        card.style.display = 'block';
+      }else{
+        card.style.display = 'none';
+      }
+    });
+
+  });
+});
+
+if(filter === 'all' || filter === category){
+  card.style.display = 'block';
+  setTimeout(()=> card.style.opacity = '1', 10);
+}else{
+  card.style.opacity = '0';
+  setTimeout(()=> card.style.display = 'none', 300);
+}        
+
+            </script>
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+    const detailToggle = document.getElementById('detailToggle');
+    const detailModal = document.getElementById('detailModal');
+    const detailClose = document.getElementById('detailClose');
+
+    if(detailToggle && detailModal && detailClose){
+      detailToggle.addEventListener('click', () => {
+        detailModal.classList.add('active');
+        document.body.classList.add('modal-open');
+      });
+
+      detailClose.addEventListener('click', () => {
+        detailModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+      });
+
+      detailModal.addEventListener('click', (e) => {
+        if(e.target === detailModal){
+          detailModal.classList.remove('active');
+          document.body.classList.remove('modal-open');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape'){
+          detailModal.classList.remove('active');
+          document.body.classList.remove('modal-open');
+        }
+      });
+    }
+  });
+
+  const video = document.getElementById('shortsVideo');
+const wrap = document.querySelector('.shorts-video-wrap');
+const playBtn = document.getElementById('playBtn');
+
+wrap.addEventListener('click', function(){
+
+if(video.paused){
+    video.currentTime = 0; // ⭐ 처음부터 재생
+    video.play();
+    playBtn.style.opacity = '0';
+}else{
+    video.pause();
+    playBtn.style.opacity = '1';
+}
+
+});
+
+// 영상 끝나면 버튼 다시 보이기
+video.addEventListener('ended', function(){
+    playBtn.style.opacity = '1';
+});
+
+const shortsVideo = document.getElementById('shortsVideo');
+
+video.addEventListener('loadeddata', function(){
+    video.currentTime = 1.8; // 1초 지점을 썸네일로 사용
+});
+
+            </script>
+             
+</body>
+
+</html>

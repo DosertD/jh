@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ABOUT 페이지 */
+
+.about-title{
+  position:fixed;
+  left:30px;
+  top:50%;
+  transform:translateY(-50%) rotate(180deg);
+  writing-mode:vertical-rl;
+  font-size:14px;
+  letter-spacing:5px;
+  color:#cbbba0; /* 베이지 포인트 */
+}
+.about-title::after{
+    content:"";
+  position:absolute;
+  left:50%;
+  top:-150px;
+  width:2px;
+  height:150px;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    #cbbba0,
+    transparent
+  );
+  transform:translateX(-50%);
+}
+
+/* 전체 영역 */
+.about-wrap{
+  max-width:1000px;
+  margin:120px auto;
+  padding:0 20px;
+  color:#fff;
+}
+
+/* HERO */
+.about-hero{
+  margin-bottom:120px;
+}
+
+.about-hero h1{
+  font-size:48px;
+  font-weight:600;
+}
+
+.about-hero p{
+  margin-top:10px;
+  color:#aaa;
+}
+
+/* PROFILE */
+.about-profile{
+  display:flex;
+  gap:60px;
+  margin-bottom:120px;
+}
+
+.about-profile .left{
+  flex:1;
+}
+
+.about-profile .right{
+  flex:1;
+}
+
+.profile-img{
+  width:100%;
+  height:300px;
+  background:#111;
+  border-radius:20px;
+}
+
+/* SKILLS */
+.about-skills{
+  margin-bottom:120px;
+}
+
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.skill-card{
+  padding:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  transition:0.3s;
+}
+
+.skill-card:hover{
+  transform:translateY(-5px);
+  border-color:#cbbba0;
+}
+
+.skill-card h3{
+  margin-bottom:10px;
+}
+
+/* EXPERIENCE */
+.about-exp{
+  margin-bottom:120px;
+}
+
+/* CONTACT */
+.about-contact{
+  margin-bottom:120px;
+}
+
+.contact-btn{
+  margin-top:20px;
+  padding:10px 20px;
+  background:none;
+  border:1px solid #cbbba0;
+  color:#cbbba0;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact-btn:hover{
+  background:#cbbba0;
+  color:#000;
+}
+
+.navbar a.active{
+  color:#cbbba0;
+}
+
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* 딜레이 */
+.delay1{ transition-delay:0.2s; }
+.delay2{ transition-delay:0.4s; }
+.delay3{ transition-delay:0.6s; }
+.delay4{ transition-delay:0.8s; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+
+        <a href="index.html" class="logo">DOSTUDIO</a>
+        
+        <nav>
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+    </header>
+        
+        <!-- 세로 타이틀 -->
+<div class="about-title">ABOUT</div>
+
+<div class="about-wrap">
+
+  <!-- HERO -->
+  <section class="about-hero fade-up">
+    <h1>Creative Video Designer</h1>
+    <p>Motion Graphics · Editing · Visual Storytelling</p>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="about-profile fade-up delay1">
+    <div class="left">
+      <h2>Profile</h2>
+      <p>
+        영상 편집과 모션그래픽을 중심으로  
+        브랜드의 메시지를 효과적으로 전달하는 작업을 합니다.
+      </p>
+
+      <p>
+        단순한 영상 제작이 아닌, 흐름과 구조를 설계하여  
+        보는 사람이 이해하기 쉬운 콘텐츠를 만듭니다.
+      </p>
+    </div>
+
+    <div class="right">
+      <div class="profile-img"></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="about-skills fade-up delay2">
+    <h2>Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>After Effects</h3>
+        <p>타이포그래피 및 모션그래픽 제작</p>
+      </div>
+
+      <div class="skill-card">
+        <h3>Premiere Pro</h3>
+        <p>영상 편집 및 컷 구성</p>
+      </div>
+
+      <div class="skill-card">
+        <h3>Blender</h3>
+        <p>3D 요소 및 비주얼 제작</p>
+      </div>
+      
+      <div class="skill-card">
+        <h3>Photoshop</h3>
+        <p>썸네일 및 비주얼 이미지 제작</p>
+      </div>
+    
+      <div class="skill-card">
+        <h3>Illustrator</h3>
+        <p>그래픽 요소 및 아이콘 디자인</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="about-exp fade-up delay3">
+    <h2>Experience</h2>
+    <p>
+      실내건축디자인 전공과 건축 현장 경험을 바탕으로  
+      공간과 구조에 대한 이해를 가지고 있습니다.
+    </p>
+
+    <p>
+      이러한 경험을 영상에 적용하여  
+      더 안정적이고 설계된 구성의 콘텐츠를 제작합니다.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="about-contact fade-up delay4">
+    <h2>Contact</h2>
+    <p>your@email.com</p>
+    <button class="contact-btn">Contact Me</button>
+  </section>
+
+</div>
+
+
+
+<script>
+    const elements = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{ threshold:0.2 });
+
+elements.forEach(el => observer.observe(el));
+</script>
+<footer>
+  © 2026 DO
+</footer>
+</body>
+</html>
