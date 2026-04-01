@@ -654,28 +654,62 @@ html {
 
 }
 
-@media (max-width: 768px){
+@media (max-width:768px){
 
-  .film-strip{
-    display: none !important;
-  }
-
-  .film-track{
-    display: none !important;
-  }
-
-  .film-frame{
-    display: none !important;
-  }
-
+  .film-strip,
+  .film-track,
+  .film-frame,
   .film-frame video{
-    display: none !important;
+    display:none !important;
   }
 
 }
 
-@media (max-width: 768px){
-  .film{
+/* 햄버거 버튼 */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:5px;
+}
+
+.menu-toggle span{
+  width:25px;
+  height:3px;
+  background:white;
+}
+
+/* 모바일 */
+@media (max-width:768px){
+
+  .menu-toggle{
+    display:flex !important;
+  }
+
+  .navbar ul{
     display:none !important;
   }
+
+}
+
+@media (max-width:768px){
+
+  .navbar ul{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:220px;
+    height:100vh;
+    background:#111;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    transition:0.4s;
+  }
+
+  .navbar ul.active{
+    right:0;
+  }
+
 }

@@ -140,24 +140,13 @@
   
   }
 
-  @media (max-width: 480px){
+  @media (max-width:768px){
 
-    .film-strip{
-      display:none;
-    }
-  
-    .glass{
-      display:none;
-    }
-  
-    .parallax{
-      display:none;
-    }
-  
-  }
-
-  @media (max-width: 768px){
-    .film{
+    .film-strip,
+    .film-track,
+    .film-frame,
+    .film-frame video{
       display:none !important;
     }
+  
   }
