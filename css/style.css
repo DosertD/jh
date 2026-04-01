@@ -526,3 +526,40 @@ html {
     height: 100%;
     object-fit: cover;
   }
+
+
+  @media (max-width: 768px) {
+
+  }
+
+  @media (max-width: 768px) {
+
+    body{
+      overflow-x: hidden;
+    }
+  
+    section{
+      padding: 60px 20px;
+    }
+  
+    h1{
+      font-size: 28px;
+    }
+  
+    h2{
+      font-size: 22px;
+    }
+  
+    p{
+      font-size: 14px;
+    }
+  
+  }
+
+  @media (max-width: 768px) {
+
+    .vertical-text{
+      display: none;
+    }
+  
+  }
