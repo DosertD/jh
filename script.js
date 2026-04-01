@@ -115,7 +115,7 @@ elements.forEach(el => observer.observe(el));
 
 const video = document.querySelectorAll('.work-video');
 
-videos.forEach(video => {
+video.forEach(video => {
 
     const thumbTime = video.getAttribute('data-time');
 
@@ -163,24 +163,27 @@ if(window.innerWidth < 768){
   });
 
 }
+if(window.innerWidth > 768){
 
-const toggle = document.getElementById("menuToggle");
-const menu = document.querySelector(".nav-menu");
+  const frames = document.querySelectorAll('.film-frame video');
 
-toggle.addEventListener("click", function(){
-  menu.classList.toggle("active");
-});
-
-document.querySelectorAll(".nav-menu a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    menu.classList.remove("active");
+  frames.forEach((video, index) => {
+    video.play();
+    video.currentTime = index * 0.5;
   });
-});
+
+  const filmVideos = document.querySelectorAll('.film-frame video');
+
+  filmVideos.forEach(video => {
+    video.playbackRate = 0.5;
+  });
+
+}
 
 document.addEventListener("DOMContentLoaded", function(){
 
   const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".navbar ul");
+  const menu = document.querySelector(".nav-menu");
 
   if(toggle && menu){
     toggle.addEventListener("click", function(){
@@ -189,4 +192,3 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
 });
-
