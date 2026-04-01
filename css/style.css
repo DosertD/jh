@@ -653,3 +653,23 @@ html {
   }
 
 }
+
+@media (max-width: 768px){
+
+  .film-strip{
+    display: none !important;
+  }
+
+  .film-track{
+    display: none !important;
+  }
+
+  .film-frame{
+    display: none !important;
+  }
+
+  .film-frame video{
+    display: none !important;
+  }
+
+}
