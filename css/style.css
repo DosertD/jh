@@ -28,11 +28,6 @@ body {
   z-index: 1000;
 }
 
-.navbar ul {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-}
 
 .navbar a {
   color: white;
@@ -43,6 +38,16 @@ body {
 .navbar a:hover {
   opacity: .6;
 }
+
+.nav-menu{
+  display: flex;
+  gap: 0;   /* 🔥 제거 */
+}
+
+.nav-menu li{
+  margin: 0 20px;  /* 👉 대신 이걸 사용 */
+}
+
 
 /* ================= HERO ================= */
 
@@ -666,3 +671,21 @@ html {
   }
 
 }
+
+@media (min-width: 769px){
+
+  .nav-menu{
+    flex-direction: row !important;
+    position: static !important;
+    height: auto !important;
+    right: -50 !important;
+  }
+
+}
+
+.nav-menu a{
+  text-decoration: none;
+  color: white;
+  padding: 0;
+}
+
