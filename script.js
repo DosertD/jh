@@ -164,3 +164,16 @@ if(window.innerWidth < 768){
 
 }
 
+const toggle = document.getElementById("menuToggle");
+const menu = document.querySelector(".nav-menu");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-menu a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    menu.classList.remove("active");
+  });
+});
+

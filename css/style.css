@@ -563,3 +563,68 @@ html {
     }
   
   }
+
+  /* ===== NAVBAR ===== */
+.navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 메뉴 기본 */
+.nav-menu{
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-menu a{
+  text-decoration: none;
+  color: white;
+}
+
+/* 햄버거 버튼 */
+.menu-toggle{
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span{
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 4px 0;
+}
+
+/* ===== 모바일 ===== */
+@media (max-width: 768px){
+
+  .menu-toggle{
+    display: flex;
+  }
+
+  .nav-menu{
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: #111;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: 0.4s;
+  }
+
+  .nav-menu.active{
+    right: 0;
+  }
+
+}
