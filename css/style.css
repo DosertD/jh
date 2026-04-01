@@ -628,3 +628,28 @@ html {
   }
 
 }
+
+@media (max-width: 768px){
+
+  body{
+    overflow-x: hidden;
+  }
+
+  .film-strip,
+  .film-track,
+  .film-video{
+    display: none;
+  }
+
+  .vertical-text{
+    display: none;
+  }
+
+  .glass-card{
+    position: static;
+    width: 90%;
+    margin: 120px auto;
+    transform: none;
+  }
+
+}

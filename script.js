@@ -167,7 +167,7 @@ if(window.innerWidth < 768){
 const toggle = document.getElementById("menuToggle");
 const menu = document.querySelector(".nav-menu");
 
-toggle.addEventListener("click", () => {
+toggle.addEventListener("click", function(){
   menu.classList.toggle("active");
 });
 
