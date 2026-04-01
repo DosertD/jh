@@ -148,3 +148,19 @@ filmVideos.forEach(video => {
   video.playbackRate = 0.5; // 0.5배 속도로 느리게
 });
 
+if(window.innerWidth < 768){
+
+  const videos = document.querySelectorAll("video");
+
+  videos.forEach(video=>{
+    video.addEventListener("click",()=>{
+      if(video.paused){
+        video.play();
+      }else{
+        video.pause();
+      }
+    });
+  });
+
+}
+

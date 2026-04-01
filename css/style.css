@@ -526,24 +526,3 @@ html {
     height: 100%;
     object-fit: cover;
   }
-
-
-@media (max-width:600px){
-
-  /* 네비 숨김 */
-  .navbar ul{
-    display:none;
-  }
-
-  /* 텍스트 축소 */
-  .hero-text h1{
-    font-size:26px;
-  }
-
-  /* 영상 꽉 차게 */
-  video{
-    width:100%;
-    height:auto;
-  }
-
-}
