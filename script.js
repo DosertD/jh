@@ -169,3 +169,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+if (window.innerWidth <= 768) {
+  const filmVideos = document.querySelectorAll(".film-frame video");
+
+  filmVideos.forEach((video) => {
+    video.pause();
+    video.removeAttribute("autoplay");
+    video.currentTime = 0;
+  });
+}
+
