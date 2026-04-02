@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DOSTUDIO | Works</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+
+      
 
 /* works page only */
 
@@ -21,61 +23,6 @@
     margin:120px auto;
     padding:0 20px;
 }
-
-/* GRID */
-
-.works-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:30px;
-}
-
-/* CARD */
-
-.work-card{
-    width:100%;
-    height:300px;             /* ⭐ 여기만으로 크기 제어 */
-    overflow:hidden;
-    border-radius:12px;
-    background:#111;
-    position:relative;         /* ⭐ 필수 */
-}
-
-/* VIDEO */
-
-.work-card video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.4s;
-}
-
-/* HOVER */
-
-.work-card:hover video{
-    transform:scale(1.05);
-}
-
-/* TEXT */
-
-.work-info{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    padding:20px;
-    background:linear-gradient(transparent,rgba(0,0,0,0.9));
-}
-
-.work-info h3{
-    font-size:18px;
-}
-
-.work-info p{
-    font-size:13px;
-    opacity:.7;
-}
-
 /* 반응형 */
 
 .works-grid{
@@ -87,6 +34,7 @@
 /* CARD */
 
 .work-card{
+    width:100%;
     position:relative;
     height:260px;
     border-radius:12px;
@@ -679,34 +627,131 @@ body.modal-open{
     opacity:0.7;
 }
 
-@media (max-width: 768px) {
+.nav {
+  display: flex;
+}
 
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+}
+
+.shorts-video-wrap video{
+    width:100%;
+    display:block;
+}
+
+/* 재생 전에는 썸네일 느낌 살리기 */
+.shorts-video-wrap video:not(:playing){
+    filter: brightness(0.9);
+}
+
+.shorts-video-wrap{
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* 썸네일 위에 살짝 어둡게 */
+.shorts-video-wrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.2);
+    pointer-events:none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 10000;
+  }
+
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 220px;
+    background: #111;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 9999;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: static;
+    right: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    margin: 0;
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 6px 0;
+  }
 }
     </style>
-    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <header class="navbar">
+  <header class="navbar">
 
-        <a href="index.html" class="logo">DOSTUDIO</a>
-        
-        <nav>
-          <ul class="nav-menu">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="works.html">WORK</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-          </ul>
-        
-          <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </ul>
-        </nav>
-        
-        </header>
+    <a href="index.html" class="logo">DOSTUDIO</a>
+  
+    <!-- 햄버거 버튼 따로 -->
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  
+    <!-- 메뉴 -->
+    <nav class="nav">
+      <ul class="nav-menu">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="works.html">WORK</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  
+  </header>
     <section class="works-wrap">
 
         <h1 class="section-title vertical-title">WORKS</h1>
@@ -776,7 +821,7 @@ body.modal-open{
         <!-- CARD -->
         <div class="work-card" data-category="shorts">
         <video muted loop>
-        <source src="video/쇼츠4.mp4">
+        <source src="video/shorts4포폴용.mp4">
         </video>
         
         <div class="work-info">
@@ -786,9 +831,9 @@ body.modal-open{
         </div>
         </div>
 
-        <div class="work-card">
+        <div class="work-card" data-category="shorts">
             <video muted loop>
-            <source src="video/쇼츠4.mp4">
+            <source src="video/shorts4포폴용.mp4">
             </video>
             
             <div class="work-info">
@@ -842,7 +887,7 @@ body.modal-open{
                   <p>Product Promotion Video</p>
                 </div>
                 <div class="shorts-video-wrap">
-                  <video id="shortsVideo" playsinline >
+                  <video id="shortsVideo" playsinline poster="images/SLIT 썸네일.JPG" >
                     <source src="video/shorts5(최종본).mp4" type="video/mp4">
                   </video>
                   <div class="play-button" id="playBtn">▶</div>
@@ -860,7 +905,7 @@ body.modal-open{
             <div class="detail-modal-inner">
               
               <div class="detail-close-wrap">
-                <button class="detail-close" id="detailClose">×</button>
+                <button class="detail-close" id="detailClose" aria-label="상세페이지 닫기">×</button>
               </div>
           
               <div class="detail-modal-header">
@@ -878,173 +923,241 @@ body.modal-open{
               <div class="detail-card">
     
     <div class="detail-left">
-        <img src="images/상세페이지_포폴-01.jpg">
+      <img src="images/상세페이지_포폴-01.jpg" alt="Detail Page 전체 이미지">
     </div>
 
 </div>
           
             </div>
           </div>
-          
-
           <script>
-            const cards = document.querySelectorAll('.work-card');
-            const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
-            const closeBtn = document.querySelector('.close-btn');
-            const allVideos = document.querySelectorAll('video');
+            document.addEventListener("DOMContentLoaded", function () {
+              // =========================
+              // 기본 요소
+              // =========================
+              var cards = document.querySelectorAll(".work-card");
+              var allVideos = document.querySelectorAll("video");
             
-            // 열기
-            cards.forEach(card => {
-              const videoSrc = card.querySelector('video source').src;
+              // 일반 영상 모달
+              var videoModal = document.getElementById("videoModal");
+              var modalVideo = document.getElementById("modalVideo");
+              var closeBtn = document.querySelector(".close-btn");
             
-              card.addEventListener('click', () => {
+              // 상세페이지 모달
+              var detailToggle = document.getElementById("detailToggle");
+              var detailModal = document.getElementById("detailModal");
+              var detailClose = document.getElementById("detailClose");
             
-                // 모든 영상 정지
-                allVideos.forEach(v => {
-                  v.pause();
-                  v.currentTime = 0;
+              // 필터
+              var filterButtons = document.querySelectorAll(".filter-menu button");
+              var detailSection = document.querySelector(".detail-page-section");
+            
+              // 햄버거 메뉴
+              var menuBtn = document.querySelector(".menu-toggle");
+              var nav = document.querySelector(".nav");
+            
+              // 오른쪽 쇼츠
+              var shortsVideo = document.getElementById("shortsVideo");
+              var playBtn = document.getElementById("playBtn");
+              var shortsWrap = document.querySelector(".shorts-video-wrap");
+            
+              // =========================
+              // 공통 함수
+              // =========================
+              function pauseAllVideos() {
+                allVideos.forEach(function (video) {
+                  video.pause();
                 });
+              }
             
-                modal.classList.add('active');
-                modalVideo.src = videoSrc;
+              function lockBody() {
+                document.body.style.overflow = "hidden";
+              }
+            
+              function unlockBody() {
+                document.body.style.overflow = "auto";
+              }
+            
+              // =========================
+              // 일반 work 영상 모달
+              // =========================
+              function openVideoModal(src) {
+                if (!videoModal || !modalVideo || !src) return;
+            
+                pauseAllVideos();
+                videoModal.classList.add("active");
+                modalVideo.src = src;
                 modalVideo.play();
+                lockBody();
+              }
             
-                document.body.style.overflow = 'hidden';
+              function closeVideoModal() {
+                if (!videoModal || !modalVideo) return;
+            
+                videoModal.classList.remove("active");
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+                modalVideo.removeAttribute("src");
+                unlockBody();
+              }
+            
+              cards.forEach(function (card) {
+                var source = card.querySelector("video source");
+                if (!source) return;
+            
+                card.addEventListener("click", function () {
+                  var videoSrc = source.getAttribute("src");
+                  openVideoModal(videoSrc);
+                });
               });
-            });
             
-            // ⭐ 닫기 함수 (핵심)
-            function closeModal(){
-              modal.classList.remove('active');
+              if (closeBtn) {
+                closeBtn.addEventListener("click", function () {
+                  closeVideoModal();
+                });
+              }
             
-              // 모달 영상 정지
-              modalVideo.pause();
-              modalVideo.currentTime = 0;
-              modalVideo.src = "";
+              if (videoModal) {
+                videoModal.addEventListener("click", function (e) {
+                  if (e.target === videoModal) {
+                    closeVideoModal();
+                  }
+                });
+              }
             
-              // ⭐ 모든 영상 다시 정지 (중요)
-              allVideos.forEach(v => {
-                v.pause();
-                v.currentTime = 0;
+              // =========================
+              // 상세페이지 모달
+              // =========================
+              function openDetailModal() {
+                if (!detailModal) return;
+            
+                pauseAllVideos();
+                detailModal.classList.add("active");
+                document.body.classList.add("modal-open");
+                lockBody();
+              }
+            
+              function closeDetailModal() {
+                if (!detailModal) return;
+            
+                detailModal.classList.remove("active");
+                document.body.classList.remove("modal-open");
+                unlockBody();
+              }
+            
+              if (detailToggle) {
+                detailToggle.addEventListener("click", function () {
+                  openDetailModal();
+                });
+              }
+            
+              if (detailClose) {
+                detailClose.addEventListener("click", function () {
+                  closeDetailModal();
+                });
+              }
+            
+              if (detailModal) {
+                detailModal.addEventListener("click", function (e) {
+                  if (e.target === detailModal) {
+                    closeDetailModal();
+                  }
+                });
+              }
+            
+              // =========================
+              // ESC 닫기
+              // =========================
+              document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                  closeVideoModal();
+                  closeDetailModal();
+                }
               });
             
-              document.body.style.overflow = 'auto';
-            }
+              // =========================
+              // 필터
+              // =========================
+              filterButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                  filterButtons.forEach(function (btn) {
+                    btn.classList.remove("active");
+                  });
             
-            // 바깥 클릭
-            modal.addEventListener('click', (e) => {
-  if(e.target === modal){
-    closeModal();
+                  button.classList.add("active");
+            
+                  var filter = button.getAttribute("data-filter");
+            
+                  cards.forEach(function (card) {
+                    var category = card.getAttribute("data-category");
+            
+                    if (filter === "all" || filter === category) {
+                      card.style.display = "block";
+                    } else {
+                      card.style.display = "none";
+                    }
+                  });
+            
+                  if (detailSection) {
+                    if (filter === "all" || filter === "detail") {
+                      detailSection.style.display = "block";
+                    } else {
+                      detailSection.style.display = "none";
+                    }
+                  }
+                });
+              });
+            
+              // =========================
+              // 햄버거 메뉴
+              // =========================
+              if (menuBtn && nav) {
+                menuBtn.addEventListener("click", function () {
+                  nav.classList.toggle("active");
+                });
+              }
+            
+              var navLinks = document.querySelectorAll(".nav-menu a");
+              navLinks.forEach(function (link) {
+                link.addEventListener("click", function () {
+                  if (nav) {
+                    nav.classList.remove("active");
+                  }
+                });
+              });
+            
+              // =========================
+              // 오른쪽 쇼츠 영상 재생 버튼
+              // =========================
+              function updatePlayButton() {
+                if (!shortsVideo || !playBtn) return;
+            
+                if (shortsVideo.paused) {
+                  playBtn.style.opacity = "1";
+                } else {
+                  playBtn.style.opacity = "0";
+                }
+              }
+            
+              if (shortsWrap && shortsVideo && playBtn) {
+                shortsWrap.addEventListener("click", function () {
+  if (shortsVideo.paused) {
+    shortsVideo.play();
+    playBtn.style.opacity = "0";
+  } else {
+    shortsVideo.pause();
+    playBtn.style.opacity = "1";
   }
 });
             
-            // 닫기 버튼
-            closeBtn.addEventListener('click', closeModal);
+                shortsVideo.addEventListener("play", updatePlayButton);
+                shortsVideo.addEventListener("pause", updatePlayButton);
+                shortsVideo.addEventListener("ended", updatePlayButton);
             
-            // ESC
-            document.addEventListener('keydown', (e)=>{
-              if(e.key === 'Escape'){
-                closeModal();
+                updatePlayButton();
               }
             });
-
-            const filterButtons = document.querySelectorAll('.filter-menu button');
-const card = document.querySelectorAll('.work-card');
-
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-
-    // 버튼 active 변경
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    const filter = button.getAttribute('data-filter');
-
-    cards.forEach(card => {
-      const category = card.getAttribute('data-category');
-
-      if(filter === 'all' || filter === category){
-        card.style.display = 'block';
-      }else{
-        card.style.display = 'none';
-      }
-    });
-
-  });
-});
-
-if(filter === 'all' || filter === category){
-  card.style.display = 'block';
-  setTimeout(()=> card.style.opacity = '1', 10);
-}else{
-  card.style.opacity = '0';
-  setTimeout(()=> card.style.display = 'none', 300);
-}        
-
             </script>
-            <script>
-              document.addEventListener('DOMContentLoaded', () => {
-    const detailToggle = document.getElementById('detailToggle');
-    const detailModal = document.getElementById('detailModal');
-    const detailClose = document.getElementById('detailClose');
-
-    if(detailToggle && detailModal && detailClose){
-      detailToggle.addEventListener('click', () => {
-        detailModal.classList.add('active');
-        document.body.classList.add('modal-open');
-      });
-
-      detailClose.addEventListener('click', () => {
-        detailModal.classList.remove('active');
-        document.body.classList.remove('modal-open');
-      });
-
-      detailModal.addEventListener('click', (e) => {
-        if(e.target === detailModal){
-          detailModal.classList.remove('active');
-          document.body.classList.remove('modal-open');
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape'){
-          detailModal.classList.remove('active');
-          document.body.classList.remove('modal-open');
-        }
-      });
-    }
-  });
-
-  const video = document.getElementById('shortsVideo');
-const wrap = document.querySelector('.shorts-video-wrap');
-const playBtn = document.getElementById('playBtn');
-
-wrap.addEventListener('click', function(){
-
-if(video.paused){
-    video.currentTime = 0; // ⭐ 처음부터 재생
-    video.play();
-    playBtn.style.opacity = '0';
-}else{
-    video.pause();
-    playBtn.style.opacity = '1';
-}
-
-});
-
-// 영상 끝나면 버튼 다시 보이기
-video.addEventListener('ended', function(){
-    playBtn.style.opacity = '1';
-});
-
-const shortsVideo = document.getElementById('shortsVideo');
-
-video.addEventListener('loadeddata', function(){
-    video.currentTime = 1.8; // 1초 지점을 썸네일로 사용
-});
-            </script>
-            <script src="script.js"></script>
 </body>
 
 </html>

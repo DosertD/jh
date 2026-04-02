@@ -35,26 +35,28 @@ if (window.innerWidth > 768) {
 document.addEventListener("DOMContentLoaded", () => {
 
   // SWIPER
-  const worksSwiper = new Swiper(".worksSwiper", {
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    spaceBetween: 30,
-    loop: false,
-    speed: 600,
-    coverflowEffect: {
-      rotate: 10,
-      stretch: 0,
-      depth: 120,
-      modifier: 1,
-      slideShadows: false,
-    },
-  });
+  if (typeof Swiper !== "undefined" && document.querySelector(".worksSwiper")) {
+    const worksSwiper = new Swiper(".worksSwiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      spaceBetween: 30,
+      loop: false,
+      speed: 600,
+      coverflowEffect: {
+        rotate: 10,
+        stretch: 0,
+        depth: 120,
+        modifier: 1,
+        slideShadows: false,
+      },
+    });
+  }
 
 
   // =========================
