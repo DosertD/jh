@@ -75,20 +75,47 @@
 
 .profile-img{
   width:100%;
-  height:300px;
-  background:#111;
+  height:320px;
   border-radius:20px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.6),
+      transparent
+    ),
+    url('images/42072.jpg') center/cover no-repeat;
+
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 25px 60px rgba(0,0,0,0.4);
 }
 
+.profile-img::after{
+  content:"VIDEO EDITOR";
+  position:absolute;
+  bottom:14px;
+  left:16px;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#cbbba0;
+  opacity:0.8;
+}
 /* SKILLS */
 .about-skills{
   margin-bottom:120px;
+}
+
+.about-skills h2{
+  margin-bottom:24px;
 }
 
 .skills-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:30px;
+  padding-top:8px;
+  position:relative;
+  overflow:hidden;
 }
 
 .skill-card{
@@ -98,8 +125,31 @@
   transition:0.3s;
 }
 
+.skill-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(230,211,179,0.7),
+    transparent
+  );
+  opacity:0;
+  transition:.35s ease;
+}
+
+.skill-card:hover::before{
+  opacity:1;
+}
+
+
+
 .skill-card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-3px);
   border-color:#cbbba0;
 }
 
@@ -147,6 +197,21 @@
   transform:translateY(0);
 }
 
+.about-contact a{
+  color:#fff;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.about-contact a:hover{
+  opacity:.6;
+}
+
+.about-contact p{
+  margin:16px 0 24px;
+}
+
+
 /* 딜레이 */
 .delay1{ transition-delay:0.2s; }
 .delay2{ transition-delay:0.4s; }
@@ -155,57 +220,112 @@
 
 @media (max-width: 768px) {
 
-.contact-vertical{
+.about-title{
   display:none;
 }
 
-.contact-section{
+.about-wrap{
+  max-width:100%;
   margin:120px auto 80px;
   padding:0 20px;
-  flex-direction:column;
-  gap:40px;
 }
 
-.contact-left,
-.contact-right{
-  width:100%;
-}
-
-.contact-left{
+.about-hero{
+  margin-bottom:70px;
   text-align:center;
 }
 
-.contact-left h2{
-  font-size:36px;
-  margin-bottom:14px;
+.about-hero h1{
+  font-size:32px;
+  line-height:1.3;
 }
 
-.contact-left p{
+.about-hero p{
   font-size:14px;
-  line-height:1.7;
+  line-height:1.6;
 }
 
-.contact-right{
-  margin-top:0;
+.about-profile{
+  flex-direction:column;
+  gap:30px;
+  margin-bottom:70px;
 }
 
-.contact-item{
-  margin-bottom:22px;
-  padding-bottom:12px;
+.about-profile .left,
+.about-profile .right{
+  width:100%;
 }
 
-.contact-item span{
-  font-size:11px;
-  letter-spacing:1.5px;
+.about-profile .left{
+  text-align:center;
 }
 
-.contact-item p{
-  font-size:16px;
-  word-break:break-word;
+.profile-img{
+  height:220px;
 }
+
+.about-skills{
+  margin-bottom:70px;
+}
+
+.about-skills h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.skills-grid{
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.skill-card{
+  padding:18px;
+}
+
+.skill-card h3{
+  font-size:18px;
+}
+
+.skill-card p{
+  font-size:14px;
+  line-height:1.6;
+}
+
+.about-exp{
+  margin-bottom:70px;
+  text-align:center;
+}
+
+.about-exp p{
+  font-size:14px;
+  line-height:1.8;
+}
+
+.about-contact{
+  margin-bottom:70px;
+  text-align:center;
+}
+
+.about-contact p{
+  font-size:14px;
+  line-height:1.6;
+}
+
+.contact-btn{
+  width:100%;
+  max-width:260px;
+}
+}
+
+.about-highlight{
+  font-size:18px;
+  color:#fff;
+  margin-bottom:10px;
+  letter-spacing:0.5px;
 }
     </style>
 </head>
+<link rel="icon" type="image/png" href="images/tv-btn.png">
 <body>
     <header class="navbar">
 
@@ -234,8 +354,16 @@
 
   <!-- HERO -->
   <section class="about-hero fade-up">
-    <h1>Creative Video Designer</h1>
-    <p>Motion Graphics · Editing · Visual Storytelling</p>
+    <div class="about-hero">
+      <h1>ABOUT ME</h1>
+    
+      <p class="about-highlight">
+        브랜드의 무드를 영상으로 설계하고 전달하는 영상 디자이너입니다.
+      </p>
+      <p>
+        감각적인 편집과 모션그래픽을 기반으로 브랜드 메시지를 효과적으로 전달하는 콘텐츠를 제작합니다.
+      </p>
+    </div>
   </section>
 
   <!-- PROFILE -->
@@ -307,8 +435,10 @@
   <!-- CONTACT -->
   <section class="about-contact fade-up delay4">
     <h2>Contact</h2>
-    <p>vww2227@naver.com</p>
-    <button class="contact-btn">Contact Me</button>
+    <p><a href="mailto:vww2227@naver.com">vww2227@naver.com</a></p>
+    <a href="contact.html" class="contact-btn">
+      Contact Me
+    </a>
   </section>
 
 </div>

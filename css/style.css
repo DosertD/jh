@@ -97,6 +97,9 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   animation: float 8s ease-in-out infinite;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .glass video {
@@ -215,10 +218,22 @@ body {
   transform: translateY(-10px);
 }
 
-footer {
-  text-align: center;
-  padding: 60px;
-  opacity: .5;
+footer{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:30px 20px;
+
+  text-align:center;
+  opacity:.45;
+  font-size:13px;
+  letter-spacing:.8px;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+
+footer p{
+  margin:0;
 }
 
 .works {
@@ -377,7 +392,7 @@ html {
 
   position:relative;
   z-index:2;
-
+  border:1px solid rgba(255,255,255,0.06);
   box-shadow:0 30px 80px rgba(0,0,0,0.8);
 }
 
@@ -459,8 +474,8 @@ html {
   
   .fade-up{
     opacity:0;
-    transform:translateY(60px);
-    transition:1s ease;
+    transform:translateY(40px);
+    transition:0.9s ease;
   }
   
   .fade-up.show{
@@ -579,6 +594,25 @@ html {
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+}
+
+.navbar a{
+  position:relative;
+}
+
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:1px;
+  background:var(--main-color);
+  transition:0.35s ease;
+}
+
+.navbar a:hover::after{
+  width:100%;
 }
 
 /* 메뉴 기본 */
@@ -825,4 +859,227 @@ html {
   padding: 0;
 }
 
+/* =========================
+   QUALITY UPGRADE SET
+========================= */
 
+/* 1) NAVBAR 디테일 */
+.navbar{
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.navbar a{
+  position:relative;
+}
+
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:1px;
+  background:var(--main-color);
+  transition:width .35s ease;
+}
+
+.navbar a:hover::after{
+  width:100%;
+}
+
+/* 2) INDEX 첫인상 */
+.hero-text h1,
+.hero-text p,
+.hero-sub{
+  opacity:0;
+  transform:translateY(20px);
+  animation:heroFadeUp .9s ease forwards;
+}
+
+.hero-text p{
+  animation-delay:.18s;
+}
+
+.hero-sub{
+  animation-delay:.34s;
+}
+
+@keyframes heroFadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* 3) 글래스 카드 / 쇼릴 박스 질감 */
+.glass{
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.video-box{
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+/* 4) 공통 등장감 정리 */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:.9s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* 5) 공통 카드/버튼 질감 */
+.work-card,
+.skill-card,
+.detail-toggle-card,
+.shorts-video-wrap,
+.profile-img,
+.contact-btn{
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease,
+    background-color .35s ease,
+    color .35s ease;
+}
+
+/* 6) 버튼 기본 고급감 */
+.contact-btn{
+  display:inline-block;
+  border-radius:999px;
+  letter-spacing:.4px;
+}
+
+.contact-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.2);
+}
+
+/* 7) 공통 텍스트 리듬 */
+.showreel-text p,
+.about-profile p,
+.about-exp p,
+.about-contact p,
+.contact-left p,
+.contact-item p{
+  line-height:1.8;
+}
+
+/* ===== QUALITY PASS 1 ===== */
+
+.navbar{
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.navbar a{
+  position:relative;
+}
+
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:1px;
+  background:var(--main-color);
+  transition:width .35s ease;
+}
+
+.navbar a:hover::after{
+  width:100%;
+}
+
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:.9s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.glass{
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.video-box{
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.contact-btn{
+  display:inline-block;
+  border-radius:999px;
+  letter-spacing:.4px;
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease,
+    background-color .35s ease,
+    color .35s ease;
+}
+
+.contact-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.2);
+}
+
+.hero-text h1{
+  text-shadow:0 0 12px rgba(255,255,255,0.08);
+}
+
+.hero-text h1{
+  transform:scale(1.02);
+}
+
+.hero-text h1{
+  background:linear-gradient(
+    to right,
+    #ffffff,
+    #e6d3b3
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+  color:#e6d3b3;
+  text-shadow:0 0 10px rgba(230,211,179,0.5);
+  transition:.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+  opacity:0.6;
+}
+
+@media (max-width:768px){
+
+  .swiper-button-next,
+  .swiper-button-prev{
+    display:flex !important;
+    opacity:1 !important;
+    transform:scale(0.85);
+    padding:10px;
+  }
+
+  .swiper-button-prev{
+    left:10px;
+  }
+
+  .swiper-button-next{
+    right:10px;
+  }
+
+}
