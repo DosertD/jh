@@ -68,8 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const thumbTime = video.getAttribute("data-time") || 0;
 
-    video.addEventListener("loadeddata", () => {
+    video.addEventListener("mouseenter", () => {
       video.currentTime = thumbTime;
+      video.play();
     });
 
     video.addEventListener("mouseenter", () => {
